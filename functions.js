@@ -13,18 +13,24 @@ function pushProps(p1, p2) {
 }
 function changeStageBack() {
     switch (stage) {
-        case 8:
+        case 7:
+            stagebackindex++;
+            break;
+        case 9:
             stagebackindex++;
             break;
         case 12:
-            stagebackindex++;
-            break;
-        case 18:
             rainy = true;
             stagebackindex++;
             break;
-        case 23:
+        case 14:
+            stagebackindex++;
+            break;
+        case 17:
+            stagebackindex++;
             rainy = false;
+            break;
+        case 19:
             stagebackindex++;
             break;
     }
