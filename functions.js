@@ -58,7 +58,6 @@ function setup() {
     for (let i = 0; i < 500; i++) {
         rain.push(new Rain(0));
     }
-    frameRate(10);
 
     //test stuff
 
