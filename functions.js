@@ -419,7 +419,7 @@ function posTrigger(xpos) {
 }
 function ui() {
     fill(0, 50);
-    textSize(16);
+    textSize(18);
     stroke(0, 100);
     rect(5, 7, 120, 48, 4);
     fill(0, 200, 0);
