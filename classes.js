@@ -531,13 +531,13 @@ class Coruption {
     }
 }
 class torchArea {
-    constructor(x, y, w,id) {
+    constructor(x, y, w) {
         this.pos = createVector(x, y);
         this.w = w;
-        this.torch = createVector(this.w / 2+110, h / 2);
+        this.torch = createVector(this.w / 2+110, h / 4);
         this.drawposx = x;
-        this.curr = 25;
-        this.target = 30;
+        this.target=random(0,1);
+        this.curr = 0;
         this.array = [];
         this.grid = undefined
     }
@@ -550,27 +550,22 @@ class torchArea {
         this.displayGrid();
     }
     alternate() {
-        if (round(this.curr) > this.target) {
-            this.curr -= 0.1;
-        } else if (round(this.curr) == this.target) {
-            this.target = round(random(20, 30));
-        } else {
-            this.curr += 0.1;
-        }
+        this.target+=0.05
+        this.curr = Math.sin(this.target)+17;
         this.drawposx = this.pos.x + backgroundPosX;   
     }
     displayGrid() {
         for (let i of this.array) {
             noStroke();
             fill(0, this.checkDist(i[0], i[1]));
-            rect(i[0] + backgroundPosX + this.pos.x, i[1], 33, 32);
+            rect(i[0] + round(backgroundPosX) + this.pos.x, i[1], 32, 32);
         }
     }
     showLightCircle(){
-        fill(255,165,0,40)
+        fill(255,165,0,30)
         noStroke()
         circle(this.torch.x + backgroundPosX+ this.pos.x+17, this.torch.y, 3950/this.curr)
-        fill(255,140,0,30)
+        fill(255,140,0,20)
         circle(this.torch.x + backgroundPosX+ this.pos.x+17, this.torch.y, 1550/this.curr)
     }
     checkDist(x, y) {

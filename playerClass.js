@@ -61,7 +61,7 @@ class PlayerPhysics {
                 if (this.inAir == false) {
                     sw0 = 1;
                     this.inAir = true;
-                    this.vel.y -= 40;
+                    this.vel.y -= 23;
                 }
             }
         }
@@ -73,7 +73,7 @@ class PlayerPhysics {
     }
     gravity() {
         if (this.pos.y < this.ground - this.h) {
-            this.vel.y += 2.3;
+            this.vel.y += 1.7;
         }
         if (this.pos.y > this.ground - this.h) {
             this.vel.y = 0;

@@ -47,7 +47,7 @@ let startScrollPosX;
 let stageWidth;
 
 let dark;
-let speed = 0.7;
+let speed = 0.5;
 
 let spriteindex = 0;
 let companionSpriteIndex = 0;
@@ -56,7 +56,7 @@ let playerActions = ["attack", "fall", "idle", "jump", "run", "block", "die"];
 let playerLog = [];
 
 let enemies = [];
-let appear = true;
+let appear = false;
 
 let projectiles = [];
 let drops = [];
@@ -94,10 +94,12 @@ let particles = [];
 
 let crystalTiers = ["Shard", "Crystal", "Grand Crystal"];
 
-let enemiesSpawn = [[[0, 0, 0.5], [1,1,0.5]], [0], [0], [0], [0], [0], [0], [0], [0], [0], [0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0], [0]];
+let enemiesSpawn = [
+    [0,0,0.5], [1,0,2]
+];
 
 let stageWidthAr = [
-    3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    1,2,3,2,2,2,2,2,2,2,2,2,2,2,
 ];
 let stagebackindex = 0;
 

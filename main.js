@@ -11,12 +11,15 @@ function draw() {
         renderProjectiles();
         renderOnGround();
         rendermisc();
-
-        if (stage == 0 && playerPhysic.pos.x > 300 && ifSwitch) {
+        if (stage == 1 && posTrigger(900) && ifSwitch) {
+            enemies[1] = []
             ifSwitch = false;
+            companion.pos.x = 700
+            companion.vel.x = 10
+            companion.drawpos.x = 700
+            appear = true;
         }
     }
-
     fill(255);
     strokeWeight(1);
     fill(255);

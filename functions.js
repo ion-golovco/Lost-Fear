@@ -1,82 +1,3 @@
-function preload() {
-    bg = loadImage("assets/stage/0/bg.png");
-    bg2 = loadImage("assets/stage/0/bg2.png");
-    fg = loadImage("assets/stage/0/fg.png");
-    onGround = loadImage("assets/stage/0/gr.png");
-    pixelFont = loadFont("assets/rainyhearts.ttf");
-
-    speak = loadSound("assets/spok.wav");
-    vign = loadImage("assets/v.png");
-    hurt = loadSound("assets/hurt.wav");
-    hit = loadSound("assets/hit.wav");
-    for (let j = 0; j < 7; j++) {
-        for (let i = 0; i < 6; i++) {
-            playerSprites[j][i] = loadImage(
-                "assets/player/" +
-                    playerActions[j] +
-                    "/adventurer-" +
-                    playerActions[j] +
-                    "-0" +
-                    i +
-                    ".png"
-            );
-        }
-    }
-    for (let j = 0; j < 2; j++) {
-        for (let i = 0; i < 6; i++) {
-            companionSprites[j][i] = loadImage("assets/companion/com" + j + i + ".png");
-        }
-    }
-    for (let i = 0; i < 18; i++) {
-        props.push(loadImage("assets/misc/" + i + ".png"));
-    }
-    arrow[0] = loadImage("assets/misc/arrow.png");
-    arrow[1] = loadImage("assets/misc/arrow2.png");
-    for (let i = 0; i < 5; i++) {
-        item.push(loadImage("assets/item/" + i + ".png"));
-    }
-}
-function setup() {
-    w = 1024;
-    h = 576;
-    createCanvas(w, h);
-    startScrollPosX = w / 2;
-    for (let i of stageTextSub[stage]) {
-        textSubs.push(new vnText(i, textSprite(i[1])));
-    }
-    for (let i in cutscenesText) {
-        cutscenes.push(new CutScene(cutscenesText[i], +i + +1));
-    }
-    stageWidth = w * stageWidthAr[stage];
-    pushProps(0, 3);
-    pushEnemies();
-
-    companion = new Companion(0, mainground - 100, 80, 95, 100, 10);
-    playerPhysic = new PlayerPhysics(200, h - 75, 70, 110);
-    playerStats = new PlayerStats(100);
-
-    for (let i = 0; i < 500; i++) {
-        rain.push(new Rain(0));
-    }
-
-    //test stuff
-
-    //particles.push(new Particles(w / 5, 250, 0));
-
-    //corruption = new Coruption(0)
-
-    playerStats.inventory[2] = new Crystal(1, 2);
-    playerStats.inventory[3] = new Crystal(2, 1);
-    playerStats.inventory[4] = new Crystal(1, 2);
-    playerStats.inventory[5] = new Crystal(1, 2);
-    
-    onGroundProp = [[], [new GroundProps(500, mainground, props[5])], [], []];
-
-    // torchSpot.push(new torchArea(0, 0, w / 4));
-    // torchSpot.push(new torchArea(w/2, 0, w / 4));
-    // torchSpot.push(new torchArea(w, 0, w / 4));
-
-}
 function pushProps(p1, p2) {
     let a = [];
     groundProps = [];
@@ -115,28 +36,20 @@ function changeStageBack() {
 function pushEnemies() {
     let a = [];
     for (let k of enemiesSpawn) {
-        for (let j of k) {
-            if (j[1] == 0) {
-                for (let i = 0; i < j[0]; i++) {
+            if (k[1] === 0) {
+                for (let i = 0; i < k[0]; i++) {
                     a.push(
                         new Skeleton(
                             random(
-                                stageWidth * j[2] - wanderFromPos * 2,
-                                stageWidth * j[2] + wanderFromPos * 2
-                            ),
-                            h - 175,
-                            0,
-                            random(15, 50),
-                            round(random(7, 16)),
-                            0,
-                            70,
-                            100
-                        )
+                                stageWidth * k[2] - wanderFromPos * 2,
+                                stageWidth * k[2] + wanderFromPos * 2
+                            ), h - 175,0,
+                            random(15, 50),round(random(7, 16)),0,70,100)
                     );
                 }
             }
-        }
-        enemies.push(a);
+            enemies.push(a);
+            a = []
     }
 }
 function newSubs() {
@@ -419,7 +332,7 @@ function posTrigger(xpos) {
 }
 function ui() {
     fill(0, 50);
-    textSize(18);
+    textSize(16);
     stroke(0, 100);
     rect(5, 7, 120, 48, 4);
     fill(0, 200, 0);
@@ -432,7 +345,7 @@ function ui() {
     text("HP", 10, 20);
     text("Mana", 10, 40);
     text(
-        `${round(playerStats.hp) > 20 ? round(playerStats.hp) : 0} / ${round(playerStats.maxhp)}`,
+        `${round(playerStats.hp)} / ${round(playerStats.maxhp)}`,
         30,
         20
     );
