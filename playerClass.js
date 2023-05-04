@@ -22,7 +22,7 @@ class PlayerPhysics {
         }
         fill(100);
         //hitbox
-        //rect(this.drawpos.x, this.drawpos.y,this.w, this.h)
+        rect(this.drawpos.x, this.drawpos.y,this.w, this.h)
         push();
         translate(this.drawpos.x - this.w / 1.5, this.drawpos.y - 15);
         scale(this.dir * 0.5, 0.5);

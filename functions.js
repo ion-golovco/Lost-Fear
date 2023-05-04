@@ -13,24 +13,24 @@ function pushProps(p1, p2) {
 }
 function changeStageBack() {
     switch (stage) {
-        case 7:
+        case 2:
             stagebackindex++;
             break;
-        case 9:
+        case 3:
             stagebackindex++;
             break;
-        case 12:
+        case 4:
             rainy = true;
             stagebackindex++;
             break;
-        case 14:
+        case 5:
             stagebackindex++;
             break;
-        case 17:
+        case 6:
             stagebackindex++;
             rainy = false;
             break;
-        case 19:
+        case 7:
             stagebackindex++;
             break;
     }
@@ -85,7 +85,7 @@ function textSprite(i) {
     }
 }
 function youDied() {
-    //console.log("dead");
+    console.log("dead");
 }
 
 function renderBackground() {
